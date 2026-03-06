@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Personas.api.Infrastructure;
+using Personas.api.Servicio;
 using Personas.Application.Commands;
 using Personas.Application.Queries;
 using System;
@@ -11,6 +12,7 @@ using System.Web.Http;
 
 namespace Personas.api.Controllers
 {
+    [JwtAuthorize]
     [RoutePrefix("api/personas")]
     public class PersonasController : ApiController
     {

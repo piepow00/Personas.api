@@ -2,6 +2,7 @@ using System.Web.Http;
 using WebActivatorEx;
 using Personas.api;
 using Swashbuckle.Application;
+using Personas.api.Filter;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -34,6 +35,7 @@ namespace Personas.api
                         //
                         c.SingleApiVersion("v1", "Personas.api");
                         c.DescribeAllEnumsAsStrings();
+                        c.OperationFilter<AddAuthorizationHeaderParameterOperationFilter>();
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
                         //c.PrettyPrint();
@@ -248,7 +250,7 @@ namespace Personas.api
                         // If your API supports ApiKey, you can override the default values.
                         // "apiKeyIn" can either be "query" or "header"
                         //
-                        //c.EnableApiKeySupport("apiKey", "header");
+                        c.EnableApiKeySupport("apiKey", "header");
                     });
         }
     }
